@@ -1,12 +1,11 @@
 pipeline {
-	agent none  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven394'
+	agent any 
+        tools {
+           maven 'maven363' 
         }
-      }
-      steps {
+       stages {
+             stage(buildmaven) {
+             steps {
       	sh 'mvn clean install'
       }
     }
